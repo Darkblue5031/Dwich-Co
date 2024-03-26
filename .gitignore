@@ -4,3 +4,7 @@ venv/
 Dwitch/__pycache__/
 Dwitch/food/migrations/
 Dwitch/drink/migrations/
+Dwitch/food/migrations/__pycache__/
+Dwitch/drink/migrations/__pycache__/
+insert.py
+memo.cmd
