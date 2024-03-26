@@ -1,0 +1,8 @@
+.idea/
+venv/
+memo.cmd
+insert.py
+Dwitch/drink/migration/*
+Dwitch/db.sqlite3
+Dwitch/food/migration/*
+
