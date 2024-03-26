@@ -2,9 +2,9 @@ Dwitch/db.sqlite3
 .idea
 venv/
 Dwitch/__pycache__/
-Dwitch/food/migrations/
-Dwitch/drink/migrations/
-Dwitch/food/migrations/__pycache__/
-Dwitch/drink/migrations/__pycache__/
+Dwitch/food/migrations/*
+Dwitch/drink/migrations/*
+Dwitch/food/__pycache__/
+Dwitch/drink/__pycache__/
 insert.py
 memo.cmd
