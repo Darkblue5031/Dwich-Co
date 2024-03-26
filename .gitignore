@@ -1,0 +1,6 @@
+Dwitch/db.sqlite3
+.idea
+venv/
+Dwitch/__pycache__/
+Dwitch/food/migrations/
+Dwitch/drink/migrations/
