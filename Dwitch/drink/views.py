@@ -1,9 +1,11 @@
 from django.shortcuts import render
 
+
 # Create your views here.
 
-def index(request):
-    return render(request, 'html/index.html')
+
+def drink(request):
+    return render(request, 'html/drink.html')
 
 def soft(request):
     return render(request, 'html/soft.html')

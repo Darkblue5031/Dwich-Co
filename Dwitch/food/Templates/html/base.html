@@ -4,10 +4,10 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     <ul>
-        <li><a href="{% url 'index' %}">Home</a></li>
-        <li><a href="{% url 'food:burgers' %}">Burgers</a></li>
-        <li><a href="contact.asp">Contact</a></li>
-        <li><a href="about.asp">About</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'food:food' %}">food</a></li>
+        <li><a href="{% url 'drink:drink' %}">drink</a></li>
+        <li><a href="{% url 'menu:menu' %}">menu</a></li>
     </ul>
 <title>{% block title %} {% endblock %}</title>
 </head>
