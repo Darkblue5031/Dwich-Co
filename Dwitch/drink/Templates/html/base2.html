@@ -2,16 +2,12 @@
 <html>
 <head>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base2.css' %}">
     <ul>
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'food:food' %}">food</a></li>
         <li><a href="{% url 'drink:drink' %}">drink</a></li>
         <li><a href="{% url 'menu:menu' %}">menu</a></li>
-        <li class="nav-item">
-            <a href="" class="nav-link"><span id="cart">0</span></a>
-        </li>
-        <li> Login</li>
     </ul>
 <title>{% block title %} {% endblock %}</title>
 </head>
@@ -25,6 +21,3 @@
     <script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>
-
-<!-- 6_13min  -->
-<!-- 7_11.30min  -->

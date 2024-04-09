@@ -1,12 +1,54 @@
 {% extends 'html/base.html' %}
-
-{% block title %} BURGERS {% endblock %}
+{% load static %}
+{% block title %}burgers{% endblock %}
 
 {% block content %}
-<h1>NEED Burgers 1</h1>
-<h2>NEED Burgers 2</h2>
-<h3>NEED Burgers 3</h3>
-<h4>NEED Burgers 4</h4>
-<h5>NEED Burgers 5</h5>
-<h6>NEED Burgers 6</h6>
+    <h1>burgers</h1>
+
+    {% for burger in burgers %}
+        {% if burger.en_ligne and burger.du_moment %}
+            <h2 class="title">Du moment</h2>
+            <h3>{{ burger.nom }}<br>{{ burger.description }}<br>{{ burger.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-md-8">
+                    <h2 class="title">Carte</h2>
+                    <div class="row">
+                        {% for burger in burgers %}
+                            <div class="col-md-6 p-4">
+                            {% if burger.en_ligne and not burger.du_moment and "Double" not in burger.nom %}
+                                <img class="picture" src="{{ burger.image }}">
+                                <h4 class="item_title" id="bur{{burger.id}}">{{ burger.nom }}</h4>
+                                <h6 class="item_title">{{ burger.description }}</h6>
+                                <div class="form-check-inligne">
+                                    <label class="form-check_label">
+                                        <input class="form-check-input" type="radio" name="burger{{burger.id}}" value="{{burger.prix}}" checked>
+                                        {{ burger.prix }} €
+                                    </label>
+                                </div>
+                                <div class="form-check-inligne">
+                                    <label class="form-check_label">
+                                        <input class="form-check-input" type="radio" name="burger{{burger.id}}">
+                                        {{ burger.prix }} + 4 €
+                                        <!-- trouver pour le double 7 8min-->
+                                    </label>
+                                </div>
+                                <button class="btn" onclick="addBurger('{{ burger.id }}')"> Ajouter au panier</button>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-dark p-4 rounded">
+                        <h2> Order list</h2>
+                        <ul id="pcart"></ul>
+                        <h4 id="ptotal"> Total: € </h4>
+                    </div>
+                </div>
+            </div>
+    <script src="{% static 'js/order.js' %}"></script>
 {% endblock %}

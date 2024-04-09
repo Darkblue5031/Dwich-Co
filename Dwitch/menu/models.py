@@ -14,6 +14,9 @@ class DwitchMenu(models.Model):
     en_ligne = models.BooleanField(default = False)
     du_moment = models.BooleanField(default = False)
 
+    def __str__(self) -> str:
+        return self.nom.nom +" " + self.frites.nom
+
 
 class DwitchMenuSoft(models.Model):
     nom = models.ForeignKey(Dwitch, on_delete=models.CASCADE, null=False)
@@ -23,6 +26,9 @@ class DwitchMenuSoft(models.Model):
     en_ligne = models.BooleanField(default = False)
     du_moment = models.BooleanField(default = False)
 
+    def __str__(self) -> str:
+        return self.nom.nom +" " + self.frites.nom +" " + self.boisson.nom
+
 
 class BurgerMenu(models.Model):
     nom = models.ForeignKey(Burger, on_delete=models.CASCADE, null=False)
@@ -30,6 +36,9 @@ class BurgerMenu(models.Model):
     prix = models.DecimalField(max_digits=4, decimal_places=2)
     en_ligne = models.BooleanField(default = False)
     du_moment = models.BooleanField(default = False)
+
+def __str__(self) -> str:
+        return self.nom.nom +" " + self.frites.nom
 
 
 class BurgerMenuSoft(models.Model):
@@ -39,6 +48,9 @@ class BurgerMenuSoft(models.Model):
     prix = models.DecimalField(max_digits=4, decimal_places=2)
     en_ligne = models.BooleanField(default = False)
     du_moment = models.BooleanField(default = False)
+
+    def __str__(self) -> str:
+        return self.nom.nom +" " + self.frites.nom +" " + self.boisson.nom
 
 
 class KidCorner(models.Model):

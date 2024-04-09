@@ -1,0 +1,22 @@
+{% extends 'html/base.html' %}
+
+{% block title %}desserts{% endblock %}
+
+{% block content %}
+    <h1>desserts</h1>
+
+    {% for dessert in desserts %}
+        {% if dessert.en_ligne and dessert.du_moment %}
+            <h2>Du moment</h2>
+            <h3>{{ dessert.nom }}<br>{{ dessert.description }}<br>{{ dessert.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+
+    <h2>Carte</h2>
+
+    {% for dessert in desserts %}
+        {% if dessert.en_ligne and not dessert.du_moment %}
+            <h3>{{ dessert.nom }}<br>{{ dessert.description }}<br>{{ dessert.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

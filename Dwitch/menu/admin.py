@@ -6,11 +6,11 @@ from .models import DwitchMenu, BurgerMenu, BurgerMenuSoft, DwitchMenuSoft, KidC
 
 
 class MenuAdmin(admin.ModelAdmin):
-    list_display= ("nom", "prix", "en_ligne", "du_moment")
+    list_display= ("nom", "frites", "prix", "en_ligne", "du_moment")
 
 
 class MenuSoftAdmin(admin.ModelAdmin):
-    list_display= ("nom", "prix", "boisson", "en_ligne", "du_moment")
+    list_display= ("nom", "frites", "boisson", "prix", "boisson", "en_ligne", "du_moment")
 
 
 admin.site.register(BurgerMenu, MenuAdmin)

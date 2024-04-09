@@ -1,0 +1,22 @@
+{% extends 'html/base.html' %}
+
+{% block title %}frites{% endblock %}
+
+{% block content %}
+    <h1>frites</h1>
+
+    {% for frite in frites %}
+        {% if frite.en_ligne and frite.du_moment %}
+            <h2>Du moment</h2>
+            <h3>{{ frite.nom }}<br>{{ frite.description }}<br>{{ frite.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+
+    <h2>Carte</h2>
+
+    {% for frite in frites %}
+        {% if frite.en_ligne and not frite.du_moment %}
+            <h3>{{ frite.nom }}<br>{{ frite.description }}<br>{{ frite.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'html/base.html' %}
+
+{% block title %}cafes{% endblock %}
+
+{% block content %}
+    <h1>cafes</h1>
+
+    {% for cafe in cafes %}
+        {% if cafe.en_ligne and cafe.du_moment %}
+            <h2>Du moment</h2>
+            <h3>{{ cafe.nom }}<br>{{ cafe.description }}<br>{{ cafe.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+
+    <h2>Carte</h2>
+
+    {% for cafe in cafes %}
+        {% if cafe.en_ligne and not cafe.du_moment %}
+            <h3>{{ cafe.nom }}<br>{{ cafe.description }}<br>{{ cafe.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

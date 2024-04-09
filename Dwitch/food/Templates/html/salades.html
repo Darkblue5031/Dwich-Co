@@ -1,0 +1,22 @@
+{% extends 'html/base.html' %}
+
+{% block title %}salades{% endblock %}
+
+{% block content %}
+    <h1>salades</h1>
+
+    {% for salade in salades %}
+        {% if salade.en_ligne and salade.du_moment %}
+            <h2>Du moment</h2>
+            <h3>{{ salade.nom }}<br>{{ salade.description }}<br>{{ salade.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+
+    <h2>Carte</h2>
+
+    {% for salade in salades %}
+        {% if salade.en_ligne and not salade.du_moment %}
+            <h3>{{ salade.nom }}<br>{{ salade.description }}<br>{{ salade.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

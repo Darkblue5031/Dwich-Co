@@ -1,0 +1,22 @@
+{% extends 'html/base.html' %}
+
+{% block title %}pressions{% endblock %}
+
+{% block content %}
+    <h1>pressions</h1>
+
+    {% for pression in pressions %}
+        {% if pression.en_ligne and pression.du_moment %}
+            <h2>Du moment</h2>
+            <h3>{{ pression.nom }}<br>{{ pression.description }}<br>25cl {{ pression.prix_25cl }} € // 50cl {{ pression.prix_50cl }} €</h3>
+        {% endif %}
+    {% endfor %}
+
+    <h2>Carte</h2>
+
+    {% for pression in pressions %}
+        {% if pression.en_ligne and not pression.du_moment %}
+            <h3>{{ pression.nom }}<br>{{ pression.description }}<br>25cl {{ pression.prix_25cl }} € // 50cl {{ pression.prix_50cl }} €</h3>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

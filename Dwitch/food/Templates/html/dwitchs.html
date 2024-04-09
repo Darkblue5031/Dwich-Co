@@ -1,0 +1,22 @@
+{% extends 'html/base.html' %}
+
+{% block title %}Dwitchs{% endblock %}
+
+{% block content %}
+    <h1>Dwitchs</h1>
+
+    {% for dwitch in dwitchs %}
+        {% if dwitch.en_ligne and dwitch.du_moment %}
+            <h2>Du moment</h2>
+            <h3>{{ dwitch.nom }}<br>{{ dwitch.description }}<br>{{ dwitch.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+
+    <h2>Carte</h2>
+
+    {% for dwitch in dwitchs %}
+        {% if dwitch.en_ligne and not dwitch.du_moment %}
+            <h3>{{ dwitch.nom }}<br>{{ dwitch.description }}<br>{{ dwitch.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

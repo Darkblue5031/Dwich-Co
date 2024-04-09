@@ -5,4 +5,13 @@
 {% block content %}
 <h2>index</h2>
 <div id="test"></div>
+<ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'food:burgers' %}">burgers</a></li>
+    <li><a href="{% url 'food:dwitchs' %}">dwitchs</a></li>
+    <li><a href="{% url 'food:salades' %}">salades</a></li>
+    <li><a href="{% url 'food:frites' %}">frites</a></li>
+    <li><a href="{% url 'food:desserts' %}">desserts</a></li>
+    <li><a href="{% url 'menu:menu' %}">menu</a></li>
+</ul>
 {% endblock %}

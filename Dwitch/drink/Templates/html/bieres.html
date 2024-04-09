@@ -1,0 +1,22 @@
+{% extends 'html/base.html' %}
+
+{% block title %}bieres{% endblock %}
+
+{% block content %}
+    <h1>bieres</h1>
+
+    {% for biere in bieres %}
+        {% if biere.en_ligne and biere.du_moment %}
+            <h2>Du moment</h2>
+            <h3>{{ biere.nom }}<br>{{ biere.description }}<br>{{ biere.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+
+    <h2>Carte</h2>
+
+    {% for biere in bieres %}
+        {% if biere.en_ligne and not biere.du_moment %}
+            <h3>{{ biere.nom }}<br>{{ biere.description }}<br>{{ biere.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

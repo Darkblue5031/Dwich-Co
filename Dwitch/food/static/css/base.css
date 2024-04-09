@@ -1,8 +1,26 @@
 body {
-    background-color: lightblue;
-  }
+  background-color: lightblue;
+}
   
-  h1 {
-    color: navy;
-    margin-left: 20px;
-  }
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
+
+.title {
+  margin: 50px;
+  text-align: center;
+}
+
+.picture {
+  width: 300px;
+  border-radius: 50%;
+  height: 200px;
+}
+
+.item-title {
+  /* A supprimer si bootstrap */
+  position: relative;
+  left: 120px;
+  margin-top: 10px;
+}

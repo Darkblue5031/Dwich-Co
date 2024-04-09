@@ -1,0 +1,22 @@
+{% extends 'html/base.html' %}
+
+{% block title %}softs{% endblock %}
+
+{% block content %}
+    <h1>softs</h1>
+
+    {% for soft in softs %}
+        {% if soft.en_ligne and soft.du_moment %}
+            <h2>Du moment</h2>
+            <h3>{{ soft.nom }}<br>{{ soft.description }}<br>{{ soft.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+
+    <h2>Carte</h2>
+
+    {% for soft in softs %}
+        {% if soft.en_ligne and not soft.du_moment %}
+            <h3>{{ soft.nom }}<br>{{ soft.description }}<br>{{ soft.prix }} €</h3>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
