@@ -1,40 +1,38 @@
 var pcart = document.querySelector('#pcart');
 var ptotal = document.querySelector('#ptotal');
 
-
-function addBurger(burid){
-    burgerId = '#bur' + burid;
+function addBurger(burid) {
+    var burgerId = '#bur' + burid;
     var name = document.querySelector(burgerId).innerHTML;
     var radio = 'burger' + burid;
-    var price = document.getElementsByName(radio);
-    pcart.innerHTML += '<li>' + name + ' ' + price[0].value + '</li>';
+    var price = document.querySelector('input[name="' + radio + '"]:checked').value;
 
-    var orders = JSON.parse(localStorage.getItem('orders'));
-    var total = localStorage.getItem('total');
-    var cartSize = orders.length;
+    pcart.innerHTML += '<li>' + name + ' ' + price + ' €</li>';
 
-    orders[cartSize] = [name, price];
+    var orders = JSON.parse(localStorage.getItem('orders')) || [];
+    var total = parseFloat(localStorage.getItem('total')) || 0;
+
+    orders.push([name, parseFloat(price)]);
     localStorage.setItem('orders', JSON.stringify(orders));
-    total = Number(total) + Number(price);
+    total += parseFloat(price);
     localStorage.setItem('total', total);
 
-    var cart = document.querySelector("#cart")
+    var cart = document.querySelector("#cart");
     cart.innerHTML = orders.length;
 
     ptotal.innerHTML = 'Total: ' + total + ' €';
-    pcart.innerHTML += '<li>' + name + ' ' + price + ' €</li>';
 }
-// duplication d'affichage
 
 function pshoppingCart() {
-    var orders = JSON.parse(localStorage.getItem('orders'));
-    var total = localStorage.getItem('total');
+    var orders = JSON.parse(localStorage.getItem('orders')) || [];
+    var total = parseFloat(localStorage.getItem('total')) || 0;
     var cartSize = orders.length;
+
     pcart.innerHTML = '';
     for (let i = 0; i < cartSize; i++) {
-        pcart.innerHTML += '<li>' + orders[i][0] + ' ' + orders[i][1] + ': ' + orders[i][2] + ' €<li>';
+        pcart.innerHTML += '<li>' + orders[i][0] + ' ' + orders[i][1] + ' €</li>';
     }
-    ptotal.innerHTML + 'Total: ' + total + ' €';
+    ptotal.innerHTML = 'Total: ' + total + ' €';
 }
 
 pshoppingCart();
