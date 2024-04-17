@@ -1,0 +1,34 @@
+{% extends 'html/base.html' %}
+
+{% load static %}
+
+{% block title %} Se connecter {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="**********">
+                    </div>
+                    <button type="submit" calss="btn_info"> Se connecter</button>
+                    {% if messages %}
+                    <ul class="pt-2">
+                        {% for msg in messages %}
+                        <li> {{ msg }} </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+{% endblock %}

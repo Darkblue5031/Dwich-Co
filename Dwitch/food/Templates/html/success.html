@@ -1,0 +1,14 @@
+{% extends 'html/base.html' %}
+
+{% load static %}
+
+{% block title %} c'est noté {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h2> commande reçu</h2>
+        <h3> {{ order }}</h3>
+        <!-- message pour modifier avec le numéro -->
+    </div>
+
+{% endblock %}
