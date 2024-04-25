@@ -1,22 +1,66 @@
 {% extends 'html/base.html' %}
-
+{% load static %}
 {% block title %}frites{% endblock %}
 
 {% block content %}
     <h1>frites</h1>
 
-    {% for frite in frites %}
-        {% if frite.en_ligne and frite.du_moment %}
-            <h2>Du moment</h2>
-            <h3>{{ frite.nom }}<br>{{ frite.description }}<br>{{ frite.prix }} €</h3>
-        {% endif %}
-    {% endfor %}
+    {% for dwitch in dwitchs %}
+    {% if dwitch.en_ligne and dwitch.du_moment %}
+        <h2 class="title">Du moment</h2>
+        <div class="col-md-6 p-4">
+                <img class="picture" src="{{ dwitch.image }}">
+                <h4 class="item_title" id="bur{{dwitch.id}}">{{ dwitch.nom }}</h4>
+                <h6 class="item_title">{{ dwitch.description }}</h6>
+                <div class="form-check-inligne">
+                    <label class="form-check_label">
+                        <input class="form-check-input" type="radio" name="dwitch{{dwitch.id}}" value="{{dwitch.prix}}" checked>
+                        {{ dwitch.prix }} €
+                    </label>
+                </div>
+                <div>
+                    <button class="btn" onclick="adddwitch('{{ dwitch.id }}')"> Ajouter au panier</button>
+                </div>
+    {% endif %}
+{% endfor %}
 
-    <h2>Carte</h2>
-
-    {% for frite in frites %}
-        {% if frite.en_ligne and not frite.du_moment %}
-            <h3>{{ frite.nom }}<br>{{ frite.description }}<br>{{ frite.prix }} €</h3>
-        {% endif %}
-    {% endfor %}
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-md-8">
+                    <h2 class="title">Carte</h2>
+                    <div class="row">
+                        {% for frite in frites %}
+                            <div class="col-md-6 p-4">
+                            {% if frite.en_ligne and not frite.du_moment %}
+                                <img class="picture" src="{{ frite.image }}">
+                                <h4 class="item_title" id="bur{{frite.id}}">{{ frite.nom }}</h4>
+                                <h6 class="item_title">{{ frite.description }}</h6>
+                                <div class="form-check-inligne">
+                                    <label class="form-check_label">
+                                        <input class="form-check-input" type="radio" name="frite{{frite.id}}" value="{{frite.prix}}" checked>
+                                        {{ frite.prix }} €
+                                    </label>
+                                </div>
+                                <!-- <div class="form-check-inligne">
+                                    <label class="form-check_label">
+                                        <input class="form-check-input" type="radio" name="frite{{frite.id}}">
+                                        {{ frite.prix }} + 4 €
+                                        trouver pour le double 7 8min
+                                    </label> -->
+                                </div>
+                                <button class="btn" onclick="addfrite('{{ frite.id }}')"> Ajouter au panier</button>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-dark p-4 rounded">
+                        <h2> Order list</h2>
+                        <ul id="pcart"></ul>
+                        <h4 id="ptotal"> Total: € </h4>
+                    </div>
+                </div>
+            </div>
+    <script src="{% static 'js/order.js' %}"></script>
 {% endblock %}

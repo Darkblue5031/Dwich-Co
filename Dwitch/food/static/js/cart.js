@@ -36,7 +36,7 @@ function order() {
     var orders = localStorage.getItem('orders');
     var total = localStorage.getItem('total');
 
-    var url = "/food/order";
+    var url = "/order";
     var orderData = {};
     orderData['orders'] = orders;
     orderData['note'] = msg;

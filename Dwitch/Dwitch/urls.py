@@ -26,5 +26,10 @@ urlpatterns = [
     path('food/', include('food.urls', namespace='food')),
     path('drink/', include('drink.urls', namespace='drink')),
     path('menu/', include('menu.urls', namespace='menu')),
-    path('', views.home, name='home')
+    path('', views.home, name='home'),
+    path('order', views.order, name='order'),
+    path('success', views.success, name='success'),
+    path('signup', views.signup, name='signup'),
+    path('login', views.login, name='login'),
+    path('logout', views.logout, name='logout'),
 ]

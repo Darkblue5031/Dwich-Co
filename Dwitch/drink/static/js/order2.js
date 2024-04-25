@@ -1,7 +1,31 @@
-function addBurger(burid) {
-    var burgerId = '#bur' + burid;
-    var name = document.querySelector(burgerId).innerHTML;
-    var radio = 'burger' + burid;
+
+var nam = document.querySelector("#name");
+var price = document.querySelector("#price");
+var ptotal = document.querySelector('#total');
+
+function shoppingCart() {
+    var orders = JSON.parse(localStorage.getItem('orders')) || [];
+    var total = parseFloat(localStorage.getItem('total')) || 0;
+
+    nam.innerHTML = '<h3>Nom</h3>';
+    price.innerHTML = '<h3>Prix</h3>';
+
+    for (let i = 0; i < orders.length; i++) {
+        button = '<button class="del" onclick="removeBurger(' + i +')">X</button>';
+        nam.innerHTML += '<h4>' + orders[i][0] + '</h4>'
+        price.innerHTML += '<h4>' + orders[i][1] + ' €' + button + '</h4>'
+    }
+    ptotal.innerHTML = 'Total: ' + total + ' €';
+}
+
+shoppingCart();
+
+
+
+function addbiere(burid) {
+    var biereId = '#bur' + burid;
+    var name = document.querySelector(biereId).innerHTML;
+    var radio = 'biere' + burid;
     var price = document.querySelector('input[name="' + radio + '"]:checked').value;
 
     var orders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -15,6 +39,44 @@ function addBurger(burid) {
     var cart = document.querySelector("#cart");
     cart.innerHTML = orders.length;
 
+    pshoppingCart();
+}
+
+function addsoft(burid) {
+    var softId = '#bur' + burid;
+    var name = document.querySelector(softId).innerHTML;
+    var radio = 'soft' + burid;
+    var price = document.querySelector('input[name="' + radio + '"]:checked').value;
+
+    var orders = JSON.parse(localStorage.getItem('orders')) || [];
+    var total = parseFloat(localStorage.getItem('total')) || 0;
+
+    orders.push([name, parseFloat(price)]);
+    localStorage.setItem('orders', JSON.stringify(orders));
+    total += parseFloat(price);
+    localStorage.setItem('total', total);
+
+    var cart = document.querySelector("#cart");
+    cart.innerHTML = orders.length;
+
+    pshoppingCart();
+}
+
+function addpression(burid) {
+    var pressionId = '#bur' + burid;
+    var name = document.querySelector(pressionId).innerHTML;
+    var radio = 'pression' + burid;
+    var price = document.querySelector('input[name="' + radio + '"]:checked').value;
+
+    var orders = JSON.parse(localStorage.getItem('orders')) || [];
+    var total = parseFloat(localStorage.getItem('total')) || 0;
+
+    orders.push([name, parseFloat(price)]);
+    localStorage.setItem('orders', JSON.stringify(orders));
+    total += parseFloat(price);
+    localStorage.setItem('total', total);
+
+    var cart = document.querySelector("#pcart");
     pshoppingCart();
 }
 
@@ -30,8 +92,6 @@ function pshoppingCart() {
     ptotal.innerHTML = 'Total: ' + total + ' €';
 }
 
-pshoppingCart();
-
 function removeBurger(n) {
     var orders = JSON.parse(localStorage.getItem('orders'));
     var total = localStorage.getItem('total');
@@ -44,10 +104,10 @@ function removeBurger(n) {
     pshoppingCart();
 }
 
-function adddwitch(burid) {
-    var dwitchId = '#bur' + burid;
-    var name = document.querySelector(dwitchId).innerHTML;
-    var radio = 'dwitch' + burid;
+function addcafe(burid) {
+    var cafeId = '#bur' + burid;
+    var name = document.querySelector(cafeId).innerHTML;
+    var radio = 'cafe' + burid;
     var price = document.querySelector('input[name="' + radio + '"]:checked').value;
 
     var orders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -63,64 +123,3 @@ function adddwitch(burid) {
 
     pshoppingCart();
 }
-
-function addfrite(burid) {
-    var friteId = '#bur' + burid;
-    var name = document.querySelector(friteId).innerHTML;
-    var radio = 'frite' + burid;
-    var price = document.querySelector('input[name="' + radio + '"]:checked').value;
-
-    var orders = JSON.parse(localStorage.getItem('orders')) || [];
-    var total = parseFloat(localStorage.getItem('total')) || 0;
-
-    orders.push([name, parseFloat(price)]);
-    localStorage.setItem('orders', JSON.stringify(orders));
-    total += parseFloat(price);
-    localStorage.setItem('total', total);
-
-    var cart = document.querySelector("#cart");
-    cart.innerHTML = orders.length;
-
-    pshoppingCart();
-}
-
-function addsalade(burid) {
-    var saladeId = '#bur' + burid;
-    var name = document.querySelector(saladeId).innerHTML;
-    var radio = 'salade' + burid;
-    var price = document.querySelector('input[name="' + radio + '"]:checked').value;
-
-    var orders = JSON.parse(localStorage.getItem('orders')) || [];
-    var total = parseFloat(localStorage.getItem('total')) || 0;
-
-    orders.push([name, parseFloat(price)]);
-    localStorage.setItem('orders', JSON.stringify(orders));
-    total += parseFloat(price);
-    localStorage.setItem('total', total);
-
-    var cart = document.querySelector("#cart");
-    cart.innerHTML = orders.length;
-
-    pshoppingCart();
-}
-
-function adddessert(burid) {
-    var dessertId = '#bur' + burid;
-    var name = document.querySelector(dessertId).innerHTML;
-    var radio = 'dessert' + burid;
-    var price = document.querySelector('input[name="' + radio + '"]:checked').value;
-
-    var orders = JSON.parse(localStorage.getItem('orders')) || [];
-    var total = parseFloat(localStorage.getItem('total')) || 0;
-
-    orders.push([name, parseFloat(price)]);
-    localStorage.setItem('orders', JSON.stringify(orders));
-    total += parseFloat(price);
-    localStorage.setItem('total', total);
-
-    var cart = document.querySelector("#cart");
-    cart.innerHTML = orders.length;
-
-    pshoppingCart();
-}
-
