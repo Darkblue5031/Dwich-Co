@@ -1,0 +1,13 @@
+.idea/
+venv/
+memo.cmd
+insert.py
+Dwich/drink/migration/*
+Dwich/drink/__init__.py
+Dwich/db.sqlite3
+Dwich/food/migration/*
+Dwich/food/__init__.py
+Dwich/menu/migration/*
+Dwich/menu/__init__.py
+Dwich/Dwich/migration/*
+Dwich/Dwich/__init__.py
