@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base2.css' %}">
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'food:food' %}">food</a></li>
+        <li><a href="{% url 'drink:drink' %}">drink</a></li>
+        <li><a href="{% url 'menu:menu' %}">menu</a></li>
+    </ul>
+<title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<div>
+    {% block content %} {% endblock %}
+</div>
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

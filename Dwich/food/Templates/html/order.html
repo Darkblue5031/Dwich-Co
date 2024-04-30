@@ -1,0 +1,34 @@
+{% extends 'html/base.html' %}
+
+{% load static %}
+
+{% block title %} Order {% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 text-center">
+                <h2>Commande</h2>
+                <div class="col-md-4" id="name">
+                    <h3>Nom</h3>
+                </div>
+                <div class="col-md-4" id="price">
+                    <h3>Prix</h3>
+                </div>
+            </div>
+            <h2 id="total">Total : </h2>
+        </div>
+        <div class="col-md-4">
+            <h3>Message</h3>
+            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            <button type="submit" class="btn-sucsess" onclick="order()"> commander</button>
+            {% if not user.is_authenticated %}
+            <h3>Pas de gain de fidélité</h3>
+            {% endif %}
+        </div>
+    </div>
+    <script src="{% static 'js/cart.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{% endblock %}

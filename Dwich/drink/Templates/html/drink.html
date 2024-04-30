@@ -1,0 +1,15 @@
+{% extends 'html/base2.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<h2>index</h2>
+<div id="test"></div>
+<ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'drink:softs' %}">softs</a></li>
+    <li><a href="{% url 'drink:pressions' %}">pressions</a></li>
+    <li><a href="{% url 'drink:bieres' %}">bieres</a></li>
+    <li><a href="{% url 'drink:cafes' %}">cafes</a></li>
+</ul>
+{% endblock %}
