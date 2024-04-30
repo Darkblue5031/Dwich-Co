@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import DwitchMenu, BurgerMenu, BurgerMenuSoft, DwitchMenuSoft, KidCorner, KidCornerSoft
+from .models import DwichMenu, BurgerMenu, BurgerMenuSoft, DwichMenuSoft, KidCorner, KidCornerSoft
 
 
 # Register your models here.
@@ -14,8 +14,8 @@ class MenuSoftAdmin(admin.ModelAdmin):
 
 
 admin.site.register(BurgerMenu, MenuAdmin)
-admin.site.register(DwitchMenu, MenuAdmin)
+admin.site.register(DwichMenu, MenuAdmin)
 admin.site.register(KidCorner, MenuAdmin)
 admin.site.register(KidCornerSoft, MenuSoftAdmin)
 admin.site.register(BurgerMenuSoft, MenuSoftAdmin)
-admin.site.register(DwitchMenuSoft, MenuSoftAdmin)
+admin.site.register(DwichMenuSoft, MenuSoftAdmin)

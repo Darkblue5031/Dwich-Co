@@ -1,4 +1,4 @@
-from .models import Burger, Dwitch, Salade, Dessert, Frite
+from .models import Burger, Dwich, Salade, Dessert, Frite
 from django.shortcuts import render
 
 # Create your views here.
@@ -15,9 +15,9 @@ def burgers(request):
 
 def dwitchs(request):
     request.session.set_expiry(0)
-    dwitchs = Dwitch.objects.all()
-    ctx = {'dwitchs': dwitchs}
-    return render(request, 'html/dwitchs.html', ctx)
+    dwichs = Dwich.objects.all()
+    ctx = {'dwichs': dwichs}
+    return render(request, 'html/dwichs.html', ctx)
 
 def salades(request):
     request.session.set_expiry(0)

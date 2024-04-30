@@ -1,14 +1,14 @@
 from typing import Any
 from django.db import models
-from food.models import Dwitch, Burger, Frite
+from food.models import Dwich, Burger, Frite
 from drink.models import Soft
 
 
 # Create your models here.
 
 
-class DwitchMenu(models.Model):
-    nom = models.ForeignKey(Dwitch, on_delete=models.CASCADE, null=False)
+class DwichMenu(models.Model):
+    nom = models.ForeignKey(Dwich, on_delete=models.CASCADE, null=False)
     frites = models.ForeignKey(Frite, on_delete=models.CASCADE, null=False)
     prix = models.DecimalField(max_digits=4, decimal_places=2)
     en_ligne = models.BooleanField(default = False)
@@ -18,8 +18,8 @@ class DwitchMenu(models.Model):
         return self.nom.nom +" " + self.frites.nom
 
 
-class DwitchMenuSoft(models.Model):
-    nom = models.ForeignKey(Dwitch, on_delete=models.CASCADE, null=False)
+class DwichMenuSoft(models.Model):
+    nom = models.ForeignKey(Dwich, on_delete=models.CASCADE, null=False)
     frites = models.ForeignKey(Frite, on_delete=models.CASCADE, null=False)
     boisson = models.ForeignKey(Soft, on_delete=models.CASCADE, null=False)
     prix = models.DecimalField(max_digits=4, decimal_places=2)

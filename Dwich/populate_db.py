@@ -12,7 +12,7 @@ def populate_db():
     all_burgers = Burger.objects.all()
     all_frites = Frite.objects.all()
     all_boissons = Soft.objects.all()
-    all_dwich = Dwitch.objects.all()
+    all_dwich = Dwich.objects.all()
 
     for burger in all_burgers:
         for frite in all_frites:
@@ -22,9 +22,9 @@ def populate_db():
 
     for dwich in all_dwich:
         for frite in all_frites:
-            DwitchMenu.objects.create(nom=dwich, frites=frite, prix=(float(dwich.prix)+3.00), en_ligne=True, du_moment=False)
+            DwichMenu.objects.create(nom=dwich, frites=frite, prix=(float(dwich.prix) + 3.00), en_ligne=True, du_moment=False)
             for boisson in all_boissons:
-                DwitchMenuSoft.objects.create(nom=dwich, frites=frite, boisson=boisson, prix=float(dwich.prix)+3.00+1.50, en_ligne=True, du_moment=False)
+                DwichMenuSoft.objects.create(nom=dwich, frites=frite, boisson=boisson, prix=float(dwich.prix) + 3.00 + 1.50, en_ligne=True, du_moment=False)
 
 if __name__ == '__main__':
     populate_db()

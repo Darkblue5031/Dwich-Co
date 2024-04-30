@@ -16,7 +16,7 @@ class Burger(models.Model):
         return self.nom
 
 
-class Dwitch(models.Model):
+class Dwich(models.Model):
     nom = models.CharField(max_length=120, unique=True)
     lien_image = models.URLField()
     description = models.CharField(max_length=255)

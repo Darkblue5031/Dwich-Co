@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Burger, Salade, Dwitch, Frite, Dessert
+from .models import Burger, Salade, Dwich, Frite, Dessert
 
 
 # Register your models here.
@@ -15,6 +15,6 @@ class FoodNoDescAdmin(admin.ModelAdmin):
 
 admin.site.register(Burger, FoodAdmin)
 admin.site.register(Salade, FoodAdmin)
-admin.site.register(Dwitch, FoodAdmin)
+admin.site.register(Dwich, FoodAdmin)
 admin.site.register(Frite, FoodNoDescAdmin)
 admin.site.register(Dessert, FoodNoDescAdmin)

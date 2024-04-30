@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
-from .models import BurgerMenu, BurgerMenuSoft, DwitchMenu, DwitchMenuSoft, KidCorner, KidCornerSoft
+from .models import BurgerMenu, BurgerMenuSoft, DwichMenu, DwichMenuSoft, KidCorner, KidCornerSoft
 
 
 # Create your views here.
@@ -23,16 +23,16 @@ class BurgerMenuAutocomplete(View):
 
         if term is not None:
             # Query relevant fields from each model
-            dwitch_menus = DwitchMenu.objects.filter(nom__nom__icontains=term).values_list('nom__nom', flat=True)
-            dwitch_menu_softs = DwitchMenuSoft.objects.filter(nom__nom__icontains=term).values_list('nom__nom', flat=True)
+            dwich_menus = DwichMenu.objects.filter(nom__nom__icontains=term).values_list('nom__nom', flat=True)
+            dwich_menu_softs = DwichMenuSoft.objects.filter(nom__nom__icontains=term).values_list('nom__nom', flat=True)
             burger_menus = BurgerMenu.objects.filter(nom__nom__icontains=term).values_list('nom__nom', flat=True)
             burger_menu_softs = BurgerMenuSoft.objects.filter(nom__nom__icontains=term).values_list('nom__nom', flat=True)
             kid_corners = KidCorner.objects.filter(nom__icontains=term).values_list('nom', flat=True)
             kid_corner_softs = KidCornerSoft.objects.filter(nom__icontains=term).values_list('nom', flat=True)
 
             # Combine results from all models
-            results.extend(dwitch_menus)
-            results.extend(dwitch_menu_softs)
+            results.extend(dwich_menus)
+            results.extend(dwich_menu_softs)
             results.extend(burger_menus)
             results.extend(burger_menu_softs)
             results.extend(kid_corners)
