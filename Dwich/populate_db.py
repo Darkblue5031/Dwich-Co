@@ -1,7 +1,7 @@
 import os
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Dwitch.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Dwich.settings')
 django.setup()
 
 from menu.models import *
