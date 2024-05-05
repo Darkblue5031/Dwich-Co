@@ -1,0 +1,22 @@
+:root {
+    --Primary: #113D26;
+    --WhiteDom: #FFFFFF;
+    --Secondary: #1D2843;
+    --Cream: #F5ECE7;
+}
+
+*{
+    font-family: Inter, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
