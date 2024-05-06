@@ -48,3 +48,8 @@
     font-size: 20px;
     text-align: end;
 }
+
+.siteMapSubTitle {
+    font-size: 13px;
+    color: var(--Secondary);
+}
