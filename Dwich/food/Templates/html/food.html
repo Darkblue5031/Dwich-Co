@@ -3,15 +3,22 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-<h2>index</h2>
 <div id="test"></div>
-<ul>
-    <li><a href="{% url 'home' %}">Home</a></li>
-    <li><a href="{% url 'food:burgers' %}">burgers</a></li>
-    <li><a href="{% url 'food:dwitchs' %}">dwitchs</a></li>
-    <li><a href="{% url 'food:salades' %}">salades</a></li>
-    <li><a href="{% url 'food:frites' %}">frites</a></li>
-    <li><a href="{% url 'food:desserts' %}">desserts</a></li>
-    <li><a href="{% url 'menu:menu' %}">menu</a></li>
+<ul class="NavFood">
+    <li><a class="NavFoodCategory" href="{% url 'menu:menu' %}">Menu</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'food:dwitchs' %}">Dwitchs</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'food:burgers' %}">Burgers</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'food:salades' %}">Salades</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'food:frites' %}">Frites</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'food:desserts' %}">Desserts</a></li>
 </ul>
+{% endblock %}
+
+
+{% block Hometitle %}
+<div class="FoodItemsContainer">
+    <div class="Title">
+        <h1>OUR MENU</h1>
+    </div>
+</div>
 {% endblock %}

@@ -4,31 +4,33 @@
 
 {% block title %} Se connecter {% endblock %}
 
-{% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" name="username" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="password" placeholder="**********">
-                    </div>
-                    <button type="submit" calss="btn_info"> Se connecter</button>
-                    {% if messages %}
-                    <ul class="pt-2">
-                        {% for msg in messages %}
-                        <li> {{ msg }} </li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                </form>
-            </div>
-            <div class="col-md-3"></div>
-        </div>
-    </div>
 
+
+{% block login %}
+<div class="FoodItemsContainer">
+    <div class="TitleLogin">
+        <h1>Connexion</h1>
+    </div>
+{% block loginContent %}
+        <form method="POST" class="loginForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <input id="inputs" class="username" type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input id="inputs" class="password" type="password" name="password" placeholder="**********">
+            </div>
+            <button type="submit" class="btn_info"> Se connecter</button>
+            <a href="{% url 'signup' %}">Pas encore de compte ? s'enregistrer</a>
+            {% if messages %}
+            <ul class="pt-2">
+                {% for msg in messages %}
+                <li> {{ msg }} </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </form>
+
+{% endblock %}
+</div>
 {% endblock %}

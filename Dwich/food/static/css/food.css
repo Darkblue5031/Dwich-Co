@@ -1,0 +1,55 @@
+.FoodPageContainer {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    height: 100%;
+}
+
+.FoodItemsContainer {
+    display: grid;
+    grid-template-rows: 80px 1fr;
+}
+
+.FoodItems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+    overflow-y: auto;
+}
+
+.Title {
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    align-items: center;
+    flex-direction: row;
+}
+
+.NavFoodContainer {
+    display: flex;
+}
+
+.NavFood {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--WhiteDom);
+    color: var(--Secondary);
+    width: 100%;
+    box-shadow: rgba(148,148,148,0.50) 1px 2px 8px 2px;
+    margin: 0;
+    padding: 15% 0 0 0;
+    align-items: center;
+    gap: 3%;
+}
+
+.NavFoodCategory {
+    color: var(--Secondary);
+    font-size: 20px;
+    text-align: end;
+}
+
+.siteMapSubTitle {
+    font-size: 13px;
+    color: var(--Secondary);
+}

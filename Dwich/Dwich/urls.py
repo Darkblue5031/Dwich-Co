@@ -23,10 +23,9 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('food/', include('food.urls', namespace='food')),
+    path('', include('food.urls', namespace='food')),
     path('drink/', include('drink.urls', namespace='drink')),
     path('menu/', include('menu.urls', namespace='menu')),
-    path('', views.home, name='home'),
     path('order', views.order, name='order'),
     path('success', views.success, name='success'),
     path('signup', views.signup, name='signup'),

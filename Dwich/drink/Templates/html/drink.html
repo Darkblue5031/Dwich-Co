@@ -3,13 +3,88 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-<h2>index</h2>
 <div id="test"></div>
-<ul>
-    <li><a href="{% url 'home' %}">Home</a></li>
-    <li><a href="{% url 'drink:softs' %}">softs</a></li>
-    <li><a href="{% url 'drink:pressions' %}">pressions</a></li>
-    <li><a href="{% url 'drink:bieres' %}">bieres</a></li>
-    <li><a href="{% url 'drink:cafes' %}">cafes</a></li>
+<ul class="NavFood">
+    <li><a class="NavFoodCategory" href="{% url 'food:food' %}">Home</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'drink:softs' %}">Softs</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'drink:pressions' %}">Pressions</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'drink:bieres' %}">Bieres</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'drink:cafes' %}">Cafes</a></li>
 </ul>
+{% endblock %}
+
+{% block Hometitle %}
+<div class="FoodItemsContainer">
+    <div class="Title">
+        <h1>DRINK</h1>
+    </div>
+</div>
+
+    <h1>pressions</h1>
+
+    {% for pression in pressions %}
+        {% if pression.en_ligne and pression.du_moment %}
+            <h2 class="title">Du moment</h2>
+            <div class="col-md-6 p-4">
+                    <img class="picture" src="{{ pression.image }}">
+                    <h4 class="item_title" id="bur{{pression.id}}">{{ pression.nom }}</h4>
+                    <h6 class="item_title">{{ pression.description }}</h6>
+                    <div class="form-check-inligne">
+                        <input class="form-check-input" type="radio" name="pression{{pression.id}}" value="{{pression.prix_25cl}}" checked>
+                        {{ pression.prix_25cl }} €
+                    </label>
+                    <label class="form-check_label">
+                        <input class="form-check-input" type="radio" name="pression{{pression.id}}" value="{{pression.prix_50cl}}" checked>
+                        {{ pression.prix_50cl }} € / 50cl
+                    </label>
+                    </div>
+                    <div>
+                        <button class="btn" onclick="addpression('{{ pression.id }}')"> Ajouter au panier</button>
+                    </div>
+        {% endif %}
+    {% endfor %}
+
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-md-8">
+                    <h2 class="title">Carte</h2>
+                    <div class="row">
+                        {% for pression in pressions %}
+                            <div class="col-md-6 p-4">
+                            {% if pression.en_ligne and not pression.du_moment %}
+                                <img class="picture" src="{{ pression.image }}">
+                                <h4 class="item_title" id="bur{{pression.id}}">{{ pression.nom }}</h4>
+                                <h6 class="item_title">{{ pression.description }}</h6>
+                                <div class="form-check-inligne">
+                                    <label class="form-check_label">
+                                        <input class="form-check-input" type="radio" name="pression{{pression.id}}" value="{{pression.prix_25cl}}" checked>
+                                        {{ pression.prix_25cl }} €
+                                    </label>
+                                    <label class="form-check_label">
+                                        <input class="form-check-input" type="radio" name="pression{{pression.id}}" value="{{pression.prix_50cl}}" checked>
+                                        {{ pression.prix_50cl }} € / 50cl
+                                    </label>
+                                </div>
+                                <!-- <div class="form-check-inligne">
+                                    <label class="form-check_label">
+                                        <input class="form-check-input" type="radio" name="pression{{pression.id}}">
+                                        {{ pression.prix }} + 4 €
+                                        trouver pour le double 7 8min
+                                    </label> -->
+                                </div>
+                                <button class="btn" onclick="addpression('{{ pression.id }}')"> Ajouter au panier</button>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-dark p-4 rounded">
+                        <h2> Order list</h2>
+                        <ul id="pcart"></ul>
+                        <h4 id="ptotal"> Total: € </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
 {% endblock %}
