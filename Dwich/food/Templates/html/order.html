@@ -19,12 +19,6 @@
             </div>
             <h2 id="total">Total : </h2>
         </div>
-        <select name="pickup_slot" id="pickup_slot">
-            <option value="">Choisissez un créneau</option>
-            {% for pickup_slot in pickup_slots %}
-                <option value="{{ pickup_slot.id }}">{{ pickup_slot.time_slot }}</option>
-            {% endfor %}
-        </select>
         <div class="col-md-4">
             <h3>Message</h3>
             <textarea name="message" id="message" cols="30" rows="10"></textarea>

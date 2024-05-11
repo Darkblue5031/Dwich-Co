@@ -35,14 +35,12 @@ function order() {
     var msg = note.value;
     var orders = localStorage.getItem('orders');
     var total = localStorage.getItem('total');
-    var pickupSlotId = document.getElementById('pickup_slot').value;
 
     var url = "/order";
     var orderData = {};
     orderData['orders'] = orders;
     orderData['note'] = msg;
     orderData['total'] = total;
-    orderData['pickup_slot'] = pickupSlotId;
     $.ajax({
         url: url,
         type: "POST",
