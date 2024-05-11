@@ -4,36 +4,38 @@
 
 {% block title %} S'inscrire {% endblock %}
 
-{% block content %}
+{% block login %}
+    <div class="FoodItemsContainer">
+    <div class="TitleLogin">
+        <h1>Créer un compte</h1>
+    </div>
+{% block signup %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <form method="POST">
-                    {% csrf_token %}
-                    {% for field in form %}
-                    <div class="form-group">
-                        <div>
-                            {{ field.label_tag }}
-                        </div>
-                        <div>
-                            {{ field }}
-                        </div>
-                        {% if field.help_text %}
-                            <small style="color: grey"> {{ field.help_text }}</small>
-                        {% endif %}
-                    </div>
-                    {% endfor %}
+            <form method="POST" class="loginForm">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="input-group">
                     <div>
-                        {% for error in form.errors %}
-                        <small style="color: red"> {{ error }}</small>
-                        {% endfor %}
+                        {{ field.label_tag }}
                     </div>
-                    <button type="submit" calss="btn_info"> S'inscrire</button>
-                </form>
-            </div>
-            <div class="col-md-3"></div>
+                    <div>
+                        {{ field }}
+                    </div>
+                    {% if field.help_text %}
+                        <small style="color: grey"> {{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div>
+                    {% for error in form.errors %}
+                    <small style="color: red"> {{ error }}</small>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn_info_signup"> S'inscrire</button>
+            </form>
+{% endblock %}
         </div>
     </div>
-
+    </div>
 {% endblock %}
