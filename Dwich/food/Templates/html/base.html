@@ -14,13 +14,14 @@
 
     <header>
         <ul class="Navbar">
-            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'food:food' %}">Home</a></li>
             <li><a href="{% url 'food:food' %}">food</a></li>
             <li><a href="{% url 'drink:drink' %}">drink</a></li>
             <li><a href="{% url 'menu:menu' %}">menu</a></li>
             <li class="nav-item">
-                <a href="{% url 'order' %}" class="nav-link"><span id="cart">0</span></a>
+                <a href="{% url 'order' %}" class="nav-link">Cart: <span id="cart">0</span></a>
             </li>
+            <li><a href="{% url 'login' %}">login</a></li>
 
         </ul>
     </header>
@@ -58,7 +59,7 @@
             <div class="siteSchema alignMap">
                 <h4 class="siteMapTitle">Plan du site</h4>
                 <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'food:food' %}">Home</a></li>
                     <li><a href="{% url 'food:food' %}">food</a></li>
                     <li><a href="{% url 'drink:drink' %}">drink</a></li>
                     <li><a href="{% url 'menu:menu' %}">menu</a></li>

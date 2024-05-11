@@ -21,6 +21,7 @@
                 <input id="inputs" class="password" type="password" name="password" placeholder="**********">
             </div>
             <button type="submit" class="btn_info"> Se connecter</button>
+            <a href="{% url 'signup' %}">Pas encore de compte ? s'enregistrer</a>
             {% if messages %}
             <ul class="pt-2">
                 {% for msg in messages %}
