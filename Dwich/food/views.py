@@ -13,7 +13,7 @@ def burgers(request):
     ctx = {'burgers': burgers}
     return render(request, 'html/burgers.html', ctx)
 
-def dwitchs(request):
+def dwichs(request):
     request.session.set_expiry(0)
     dwichs = Dwich.objects.all()
     ctx = {'dwichs': dwichs}
