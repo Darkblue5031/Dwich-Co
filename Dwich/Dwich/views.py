@@ -25,7 +25,7 @@ def signup(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/food/burgers')
+            return redirect('/')
         else:
             ctx['form'] = form
     else:
@@ -42,7 +42,7 @@ def login(request):
         print(pwd, username)
         if user is not None:
             auth_login(request, user)
-            return redirect('/food/burgers')
+            return redirect('/')
         else:
             messages.info(request, 'username and/or password are incorrect')
     ctx = {'active_link': 'login'}
