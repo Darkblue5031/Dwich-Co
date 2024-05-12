@@ -101,4 +101,4 @@ Navigate to http://localhost:8000/admin/ in your browser and log in with the sup
 
 Add manually now yours products and run populate_db script to create associated menus.
 
-This project is not ended !
+> This project is not ended !
