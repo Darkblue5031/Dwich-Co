@@ -11,3 +11,8 @@ Dwich/menu/migration/*
 Dwich/menu/__init__.py
 Dwich/Dwich/migration/*
 Dwich/Dwich/__init__.py
+
+Dwich/food/__pycache__
+Dwich/drink/__pycache__
+Dwich/menu/__pycache__
+Dwich/Dwich/__pycache__
