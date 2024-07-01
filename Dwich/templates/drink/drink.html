@@ -1,8 +1,25 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %}pressions{% endblock %}
+{% extends 'fragments/base.html' %}
+
+
+{% block title %} Home {% endblock %}
 
 {% block content %}
+<div id="test"></div>
+<ul class="NavFood">
+    <li><a class="NavFoodCategory" href="{% url 'drink:softs' %}">Softs</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'drink:pressions' %}">Pressions</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'drink:bieres' %}">Bieres</a></li>
+    <li><a class="NavFoodCategory" href="{% url 'drink:cafes' %}">Cafes</a></li>
+</ul>
+{% endblock %}
+
+{% block Hometitle %}
+<div class="FoodItemsContainer">
+    <div class="Title">
+        <h1>DRINK</h1>
+    </div>
+</div>
+
     <h1>pressions</h1>
 
     {% for pression in pressions %}
@@ -70,5 +87,4 @@
                 </div>
             </div>
         </div>
-    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
