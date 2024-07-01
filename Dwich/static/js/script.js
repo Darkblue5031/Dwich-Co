@@ -27,27 +27,27 @@ else {
     }
 }
 
-var orders = JSON.parse(localStorage.getItem('orders'));
-var total = localStorage.getItem('total');
-
-if (orders === null || orders === undefined) {
-    localStorage.setItem('orders', JSON.stringify([]));
-    orders = JSON.parse(localStorage.getItem('orders'));
-} 
-
-if (total === null || total === undefined) {
-    localStorage.setItem('total', 0);
-    total = localStorage.getItem('total');
+var url = window.location.pathname;
+url = url.split('/');
+switch (url[1]) {
+    case 'order':
+        fillCart();
+        break;
+    default:
+        break;
 }
 
-var cart = document.querySelector("#cart");
-cart.innerHTML = orders.length;
-
 function fillCart() {
-    let products, totalPrice = shoppingCart();
+    let values = shoppingCart()
+    let cart = values.cart
+    let totalPrice = values.totalPrice
+    if(cart.length == 0) return;
 
-    for (let i = 0; i < products.length; i++) {
-        let product = products[i];
+    cart.forEach(product => {
+        console.log("TEST2",product);
+        console.log("TEST3",product.length);
+        console.log("TEST",product);
+
         let productElement = document.createElement('div');
         productElement.classList.add('product');
         productElement.innerHTML = `
@@ -55,7 +55,7 @@ function fillCart() {
             <div class="product-price">${product[1]}€</div>
         `;
         cartProductElement.appendChild(productElement);
-    }
+    })
 
     let totalElement = document.getElementById('total');
     totalElement.innerHTML = totalPrice + '€';
@@ -65,14 +65,26 @@ function fetchProduct(category, products) {
     let categoryPrice = 0;
     let categoryCart = [];
 
-    fetch(apiPaths[category] + JSON.stringify(products))
+    let strProducts = '';
+    products.forEach(productId => {
+        if (products.indexOf(productId) == products.length - 1) {
+            strProducts += productId;
+        } else {
+            strProducts += productId + ','
+        }
+    })
+    
+    fetch(apiPaths[category] + strProducts)
         .then(response => response.json())
         .then(data => {
             categoryPrice += data.price;
-            categoryCart.push([data.name, data.price]);
+            categoryCart.push([data[0].nom, data[0].prix]);
         });
 
-    return categoryCart, categoryPrice;
+    return {
+        categoryCart: categoryCart,
+        categoryPrice: categoryPrice
+    };
 }            
 
 function shoppingCart() {
@@ -94,12 +106,17 @@ function shoppingCart() {
 
     for (let i = 0; i < categories.length; i++) {
         if(products[i].length == 0) continue;
-        let categoryCart, categoryPrice = fetchProduct(categories[i], products[i]);
+        let categoryReponse = fetchProduct(categories[i], products[i]);
+        let categoryCart = categoryReponse.categoryCart
+        let categoryPrice = categoryReponse.categoryPrice
         cart.push(categoryCart);
         totalPrice += categoryPrice;
     }
 
-    return cart, totalPrice;
+    return {
+        cart: cart, 
+        totalPrice: totalPrice
+    };
 }
 
 function addProduct(category, productId) {
@@ -120,15 +137,11 @@ function removeProduct(category, productId) {
 
 function order() {
     var msg = note.value;
-    var orders = localStorage.getItem('orders');
-    var total = localStorage.getItem('total');
     var pickupSlotId = document.getElementById('pickup_slot').value;
 
     var url = "/order";
     var orderData = {};
-    orderData['orders'] = orders;
     orderData['note'] = msg;
-    orderData['total'] = total;
     orderData['pickup_slot'] = pickupSlotId;
     $.ajax({
         url: url,
@@ -136,8 +149,6 @@ function order() {
         data: orderData,
         success: function(data) {
             window.location.replace('success');
-            localStorage.setItem('orders', JSON.stringify([]));
-            localStorage.setItem('total', 0);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log('An error occurred: ' + textStatus, errorThrown);
