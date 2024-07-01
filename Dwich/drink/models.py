@@ -59,7 +59,6 @@ class Soft(models.Model):
         return self.nom
     
     def __dict__(self) -> dict:
-        print("Soft __dict__")
         return {
             'nom': self.nom,
             'lien_image': self.lien_image,

@@ -31,7 +31,7 @@ class Commande(models.Model):
     
     def __dict__(self):
         return {
-            'client': self.client,
+            'client': self.client.__dict__(),
             'numero': self.numero,
             'prix': self.prix.__float__(),
             'date': self.date,
@@ -49,7 +49,7 @@ class Item(models.Model):
 
     def __dict__(self):
         return {
-            'commande': self.commande,
+            'commande': self.commande.__dict__(),
             'nom': self.nom,
             'prix': self.prix.__float__()
         }
