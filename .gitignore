@@ -1,5 +1,6 @@
 .idea/
 venv/
+env/
 memo.cmd
 insert.py
 Dwich/drink/migration/*
