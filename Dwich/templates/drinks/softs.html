@@ -19,7 +19,7 @@
                         </label>
                     </div>
                     <div>
-                        <button class="btn" onclick="addsoft('{{ soft.id }}')"> Ajouter au panier</button>
+                        <button class="btn" onclick="addProduct('soft', '{{ soft.id }}')"> Ajouter au panier</button>
                     </div>
         {% endif %}
     {% endfor %}
@@ -42,7 +42,7 @@
                                     </label>
                                 </div>
                                 </div>
-                                <button class="btn" onclick="addsoft('{{ soft.id }}')"> Ajouter au panier</button>
+                                <button class="btn" onclick="addProduct('soft', '{{ soft.id }}')"> Ajouter au panier</button>
                             {% endif %}
                         </div>
                         {% endfor %}
@@ -56,5 +56,5 @@
                     </div>
                 </div>
             </div>
-    <script src="{% static 'js/order2.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

@@ -25,7 +25,7 @@ def signup(request):
     else:
         form = NewUserForm()
         ctx['form'] = form
-    return render(request, './food/templates/signup.html', ctx)
+    return render(request, 'signup.html', ctx)
 
 
 def login(request):
@@ -40,7 +40,7 @@ def login(request):
         else:
             messages.info(request, 'username and/or password are incorrect')
     ctx = {'active_link': 'login'}
-    return render(request, './food/templates/login.html', ctx)
+    return render(request, 'login.html', ctx)
 
 
 def logout(request):
@@ -92,7 +92,7 @@ def order(request):
     else:
         print("Received non-AJAX request")
     pickup_slots = PickupSlot.objects.all()
-    return render(request, './food/templates/order.html', {'pickup_slots': pickup_slots})
+    return render(request, 'order.html', {'pickup_slots': pickup_slots})
 
 
 def success(request, data=None):
@@ -104,6 +104,6 @@ def success(request, data=None):
     if orderNum is not None and Commande.objects.filter(numero=orderNum).exists():
         items = Item.objects.filter(commande__numero=orderNum)
         ctx = {'orderNum': orderNum, 'total': total, 'items': items}
-        return render(request, './food/templates/success.html', ctx)
+        return render(request, 'success.html', ctx)
     else:
         return HttpResponse("Order not found or invalid")

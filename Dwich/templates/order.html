@@ -7,18 +7,8 @@
 {% block content %}
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 text-center">
-                <h2>Commande</h2>
-                <div class="col-md-4" id="name">
-                    <h3>Nom</h3>
-                </div>
-                <div class="col-md-4" id="price">
-                    <h3>Prix</h3>
-                </div>
-            </div>
-            <h2 id="total">Total : </h2>
-        </div>
+        <div id="cart-products" onload="fillCart()"></div>
+        <div id="total"></div>
         <select name="pickup_slot" id="pickup_slot">
             <option value="">Choisissez un créneau</option>
             {% for pickup_slot in pickup_slots %}
@@ -34,7 +24,7 @@
             {% endif %}
         </div>
     </div>
-    <script src="{% static 'js/cart.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 {% endblock %}

@@ -19,7 +19,7 @@
                         </label>
                     </div>
                     <div>
-                        <button class="btn" onclick="addbiere('{{ biere.id }}')"> Ajouter au panier</button>
+                        <button class="btn" onclick="addProduct('beer', '{{ biere.id }}')"> Ajouter au panier</button>
                     </div>
         {% endif %}
     {% endfor %}
@@ -48,7 +48,7 @@
                                         trouver pour le double 7 8min
                                     </label> -->
                                 </div>
-                                <button class="btn" onclick="addbiere('{{ biere.id }}')"> Ajouter au panier</button>
+                                <button class="btn" onclick="addProduct('beer', '{{ biere.id }}')"> Ajouter au panier</button>
                             {% endif %}
                         </div>
                         {% endfor %}
@@ -62,5 +62,5 @@
                     </div>
                 </div>
             </div>
-    <script src="{% static 'js/order2.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

@@ -1,26 +1,25 @@
-<h6> Burgers // Dwitch // Americain // Kids</h6>
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}burgers{% endblock %}
+{% block title %}desserts{% endblock %}
 
 {% block content %}
-    <h1>burgers</h1>
+    <h1>desserts</h1>
 
-    {% for burger in burgers %}
-        {% if burger.en_ligne and burger.du_moment %}
+    {% for dessert in desserts %}
+        {% if dessert.en_ligne and dessert.du_moment %}
             <h2 class="title">Du moment</h2>
             <div class="col-md-6 p-4">
-                    <img class="picture" src="{{ burger.image }}">
-                    <h4 class="item_title" id="bur{{burger.id}}">{{ burger.nom }}</h4>
-                    <h6 class="item_title">{{ burger.description }}</h6>
+                    <img class="picture" src="{{ dessert.image }}">
+                    <h4 class="item_title" id="bur{{dessert.id}}">{{ dessert.nom }}</h4>
+                    <h6 class="item_title">{{ dessert.description }}</h6>
                     <div class="form-check-inligne">
                         <label class="form-check_label">
-                            <input class="form-check-input" type="radio" name="burger{{burger.id}}" value="{{burger.prix}}" checked>
-                            {{ burger.prix }} €
+                            <input class="form-check-input" type="radio" name="dessert{{dessert.id}}" value="{{dessert.prix}}" checked>
+                            {{ dessert.prix }} €
                         </label>
                     </div>
                     <div>
-                        <button class="btn" onclick="addburger('{{ burger.id }}')"> Ajouter au panier</button>
+                        <button class="btn" onclick="adddessert('{{ dessert.id }}')"> Ajouter au panier</button>
                     </div>
         {% endif %}
     {% endfor %}
@@ -30,26 +29,26 @@
                 <div class="col-md-8">
                     <h2 class="title">Carte</h2>
                     <div class="row">
-                        {% for burger in burgers %}
+                        {% for dessert in desserts %}
                             <div class="col-md-6 p-4">
-                            {% if burger.en_ligne and not burger.du_moment %}
-                                <img class="picture" src="{{ burger.image }}">
-                                <h4 class="item_title" id="bur{{burger.id}}">{{ burger.nom }}</h4>
-                                <h6 class="item_title">{{ burger.description }}</h6>
+                            {% if dessert.en_ligne and not dessert.du_moment %}
+                                <img class="picture" src="{{ dessert.image }}">
+                                <h4 class="item_title" id="bur{{dessert.id}}">{{ dessert.nom }}</h4>
+                                <h6 class="item_title">{{ dessert.description }}</h6>
                                 <div class="form-check-inligne">
                                     <label class="form-check_label">
-                                        <input class="form-check-input" type="radio" name="burger{{burger.id}}" value="{{burger.prix}}" checked>
-                                        {{ burger.prix }} €
+                                        <input class="form-check-input" type="radio" name="dessert{{dessert.id}}" value="{{dessert.prix}}" checked>
+                                        {{ dessert.prix }} €
                                     </label>
                                 </div>
                                 <!-- <div class="form-check-inligne">
                                     <label class="form-check_label">
-                                        <input class="form-check-input" type="radio" name="burger{{burger.id}}">
-                                        {{ burger.prix }} + 4 €
+                                        <input class="form-check-input" type="radio" name="dessert{{dessert.id}}">
+                                        {{ dessert.prix }} + 4 €
                                         trouver pour le double 7 8min
                                     </label> -->
                                 </div>
-                                <button class="btn" onclick="addBurger('{{ burger.id }}')"> Ajouter au panier</button>
+                                <button class="btn" onclick="adddessert('{{ dessert.id }}')"> Ajouter au panier</button>
                             {% endif %}
                         </div>
                         {% endfor %}
@@ -63,5 +62,5 @@
                     </div>
                 </div>
             </div>
-    <script src="{% static 'js/order.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

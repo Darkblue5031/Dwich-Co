@@ -38,7 +38,7 @@
                     </label>
                     </div>
                     <div>
-                        <button class="btn" onclick="addpression('{{ pression.id }}')"> Ajouter au panier</button>
+                        <button class="btn" onclick="addProduct('pression', '{{ pression.id }}')"> Ajouter au panier</button>
                     </div>
         {% endif %}
     {% endfor %}
@@ -71,7 +71,7 @@
                                         trouver pour le double 7 8min
                                     </label> -->
                                 </div>
-                                <button class="btn" onclick="addpression('{{ pression.id }}')"> Ajouter au panier</button>
+                                <button class="btn" onclick="addProduct('pression', '{{ pression.id }}')"> Ajouter au panier</button>
                             {% endif %}
                         </div>
                         {% endfor %}
