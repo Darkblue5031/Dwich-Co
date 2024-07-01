@@ -9,6 +9,13 @@ class PickupSlot(models.Model):
 
     def __str__(self) -> str:
         return str(self.time_slot.strftime("%H:%M")) + ", " + str(self.remaining_capacity)
+    
+    def __dict__(self):
+        return {
+            'time_slot': self.time_slot,
+            'remaining_capacity': self.remaining_capacity,
+            'max_capacity': self.max_capacity
+        }
 
 
 class Commande(models.Model):
@@ -21,6 +28,16 @@ class Commande(models.Model):
 
     def __str__(self) -> str:
         return str(self.client) + ", " + str(self.pickup_slot)
+    
+    def __dict__(self):
+        return {
+            'client': self.client,
+            'numero': self.numero,
+            'prix': self.prix.__float__(),
+            'date': self.date,
+            'note': self.note,
+            'pickup_slot': self.pickup_slot
+        }
 
 class Item(models.Model):
     commande = models.ForeignKey(Commande, on_delete=models.CASCADE)
@@ -30,4 +47,9 @@ class Item(models.Model):
     def __str__(self) -> str:
         return f"{self.nom}, {self.commande.pickup_slot.time_slot.strftime('%H:%M')}, {self.commande.client}"
 
-
+    def __dict__(self):
+        return {
+            'commande': self.commande,
+            'nom': self.nom,
+            'prix': self.prix.__float__()
+        }

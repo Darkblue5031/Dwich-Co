@@ -2,7 +2,7 @@ const apiPaths = {
     beer: '/api/beer/',
     soft: '/api/soft/',
     pression: '/api/pression/',
-    cafe: '/api/cafe/',
+    coffee: '/api/coffee/',
     burger: '/api/burger/',
     dwitch: '/api/dwitch/',
     fries: '/api/fries/',
@@ -89,7 +89,7 @@ function shoppingCart() {
     let saladInCart = JSON.parse(localStorage.getItem('saladInCart')) || [];
     let dessertInCart = JSON.parse(localStorage.getItem('dessertInCart')) || [];
 
-    let categories = ['beer', 'soft', 'pression', 'cafe', 'burger', 'dwitch', 'fries', 'salad', 'dessert'];
+    let categories = ['beer', 'soft', 'pression', 'coffee', 'burger', 'dwitch', 'fries', 'salad', 'dessert'];
     let products = [beerInCart, softInCart, pressionInCart, coffeeInCart, burgerInCart, dwitchInCart, friesInCart, saladInCart, dessertInCart];
 
     for (let i = 0; i < categories.length; i++) {

@@ -8,10 +8,12 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib import messages
 from .forms import NewUserForm
 from django.views.decorators.csrf import csrf_exempt
+from django.core.serializers.json import DjangoJSONEncoder
 from random import choice
+from drink.models import Soft, Biere_bouteille, Biere_pression, Cafe
+from food.models import Burger, Dwich, Frite, Salade, Dessert
+import json
 
-
-# from django.http import HttpResponse
 
 def signup(request):
     ctx = {}
@@ -107,3 +109,67 @@ def success(request, data=None):
         return render(request, 'success.html', ctx)
     else:
         return HttpResponse("Order not found or invalid")
+
+def beer(request, beers_id: str):
+    beersToFind = beers_id.split(',')
+    beers = []
+    for beerId in beersToFind:
+        beers.append(Biere_bouteille.objects.get(pk=beerId).__dict__())
+    return HttpResponse(json.dumps(beers), content_type="application/json")
+
+def soft(request, softs_id: str):
+    softsToFind = softs_id.split(',')
+    print(softs_id)
+    softs = []
+    for softId in softsToFind:
+        softs.append(Soft.objects.get(pk=softId).__dict__())
+    return HttpResponse(json.dumps(softs), content_type="application/json")
+
+def pression(request, pressions_id: str):
+    pressionsToFind = pressions_id.split(',')
+    pressions = []
+    for pressionId in pressionsToFind:
+        pressions.append(Biere_pression.objects.get(pk=pressionId).__dict__())
+    return HttpResponse(json.dumps(pressions), content_type="application/json")
+
+def coffee(request, coffees_id: str):
+    coffeesToFind = coffees_id.split(',')
+    coffees = []
+    for coffeeId in coffeesToFind:
+        coffees.append(Cafe.objects.get(pk=coffeeId).__dict__())
+    return HttpResponse(json.dumps(coffees), content_type="application/json")
+
+def burger(request, burgers_id: str):
+    burgersToFind = burgers_id.split(',')
+    burgers = []
+    for burgerId in burgersToFind:
+        burgers.append(Burger.objects.get(pk=burgerId).__dict__())
+    return HttpResponse(json.dumps(burgers), content_type="application/json")
+
+def dwitch(request, dwitchs_id: str):
+    dwitchsToFind = dwitchs_id.split(',')
+    dwitchs = []
+    for dwitchId in dwitchsToFind:
+        dwitchs.append(Dwich.objects.get(pk=dwitchId).__dict__())
+    return HttpResponse(json.dumps(dwitchs), content_type="application/json")
+
+def fries(request, fries_id: str):
+    friesToFind = fries_id.split(',')
+    fries = []
+    for friesId in friesToFind:
+        fries.append(Frite.objects.get(pk=friesId).__dict__())
+    return HttpResponse(json.dumps(fries), content_type="application/json")
+
+def salad(request, salads_id: str):
+    saladsToFind = salads_id.split(',')
+    salads = []
+    for saladId in saladsToFind:
+        salads.append(Salade.objects.get(pk=saladId).__dict__())
+    return HttpResponse(json.dumps(salads), content_type="application/json")
+
+def dessert(request, desserts_id: str):
+    dessertsToFind = desserts_id.split(',')
+    desserts = []
+    for dessertId in dessertsToFind:
+        desserts.append(Dessert.objects.get(pk=dessertId).__dict__())
+    return HttpResponse(json.dumps(desserts), content_type="application/json")

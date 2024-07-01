@@ -14,6 +14,16 @@ class Biere_pression(models.Model):
 
     def __str__(self) -> str:
         return self.nom
+    
+    def __dict__(self):
+        return {
+            'nom': self.nom,
+            'lien_image': self.lien_image,
+            'prix_25cl': self.prix_25cl,
+            'prix_50cl': self.prix_50cl,
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
 
 
 class Biere_bouteille(models.Model):
@@ -28,6 +38,15 @@ class Biere_bouteille(models.Model):
     def __str__(self) -> str:
         return self.nom
 
+    def __dict__(self):
+        return {
+            'nom': self.nom,
+            'lien_image': self.lien_image,
+            'biere_type': self.biere_type,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
 
 class Soft(models.Model):
     nom = models.CharField(max_length=120,unique=True)
@@ -38,7 +57,16 @@ class Soft(models.Model):
 
     def __str__(self) -> str:
         return self.nom
-
+    
+    def __dict__(self) -> dict:
+        print("Soft __dict__")
+        return {
+            'nom': self.nom,
+            'lien_image': self.lien_image,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        } 
 
 class Cafe(models.Model):
     nom = models.CharField(max_length=120)
@@ -49,3 +77,12 @@ class Cafe(models.Model):
 
     def __str__(self) -> str:
         return self.nom
+    
+    def __dict__(self):
+        return {
+            'nom': self.nom,
+            'lien_image': self.lien_image,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }

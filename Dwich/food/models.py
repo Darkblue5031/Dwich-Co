@@ -14,6 +14,16 @@ class Burger(models.Model):
 
     def __str__(self) -> str:
         return self.nom
+    
+    def __dict__(self):
+        return {
+            'nom': self.nom,
+            'lien_image': self.lien_image,
+            'description': self.description,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
 
 
 class Dwich(models.Model):
@@ -26,6 +36,16 @@ class Dwich(models.Model):
 
     def __str__(self) -> str:
         return self.nom
+    
+    def __dict__(self):
+        return {
+            'nom': self.nom,
+            'lien_image': self.lien_image,
+            'description': self.description,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
 
 
 class Salade(models.Model):
@@ -38,6 +58,16 @@ class Salade(models.Model):
 
     def __str__(self) -> str:
         return self.nom
+    
+    def __dict__(self):
+        return {
+            'nom': self.nom,
+            'lien_image': self.lien_image,
+            'description': self.description,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
 
 
 class Frite(models.Model):
@@ -49,6 +79,15 @@ class Frite(models.Model):
 
     def __str__(self) -> str:
         return self.nom
+    
+    def __dict__(self):
+        return {
+            'nom': self.nom,
+            'lien_image': self.lien_image,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
 
 
 class Dessert(models.Model):
@@ -61,3 +100,13 @@ class Dessert(models.Model):
 
     def __str__(self) -> str:
         return self.nom
+    
+    def __dict__(self):
+        return {
+            'nom': self.nom,
+            'lien_image': self.lien_image,
+            # 'description': self.description,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }

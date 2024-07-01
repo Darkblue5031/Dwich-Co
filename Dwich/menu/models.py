@@ -16,6 +16,15 @@ class DwichMenu(models.Model):
 
     def __str__(self) -> str:
         return self.nom.nom +" " + self.frites.nom
+    
+    def __dict__(self) -> dict:
+        return {
+            'nom': self.nom,
+            'frites': self.frites,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
 
 
 class DwichMenuSoft(models.Model):
@@ -28,6 +37,16 @@ class DwichMenuSoft(models.Model):
 
     def __str__(self) -> str:
         return self.nom.nom +" " + self.frites.nom +" " + self.boisson.nom
+    
+    def __dict__(self) -> dict:
+        return {
+            'nom': self.nom,
+            'frites': self.frites,
+            'boisson': self.boisson,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
 
 
 class BurgerMenu(models.Model):
@@ -37,9 +56,17 @@ class BurgerMenu(models.Model):
     en_ligne = models.BooleanField(default = False)
     du_moment = models.BooleanField(default = False)
 
-def __str__(self) -> str:
+    def __str__(self) -> str:
         return self.nom.nom +" " + self.frites.nom
-
+    
+    def __dict__(self) -> dict:
+        return {
+            'nom': self.nom,
+            'frites': self.frites,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
 
 class BurgerMenuSoft(models.Model):
     nom = models.ForeignKey(Burger, on_delete=models.CASCADE, null=False)
@@ -51,6 +78,16 @@ class BurgerMenuSoft(models.Model):
 
     def __str__(self) -> str:
         return self.nom.nom +" " + self.frites.nom +" " + self.boisson.nom
+    
+    def __dict__(self) -> dict:
+        return {
+            'nom': self.nom,
+            'frites': self.frites,
+            'boisson': self.boisson,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
 
 
 class KidCorner(models.Model):
@@ -61,6 +98,18 @@ class KidCorner(models.Model):
     en_ligne = models.BooleanField(default = False)
     du_moment = models.BooleanField(default = False)
 
+    def __str__(self) -> str:
+        return self.nom +" " + self.frites.nom
+    
+    def __dict__(self) -> dict:
+        return {
+            'nom': self.nom,
+            'frites': self.frites,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
+
 
 class KidCornerSoft(models.Model):
     menu_type = models.TextChoices("Viande", "Cordon_Bleu Steak")
@@ -70,3 +119,16 @@ class KidCornerSoft(models.Model):
     prix = models.DecimalField(max_digits=4, decimal_places=2)
     en_ligne = models.BooleanField(default = False)
     du_moment = models.BooleanField(default = False)
+
+    def __str__(self) -> str:
+        return self.nom +" " + self.frites.nom +" " + self.boisson.nom
+    
+    def __dict__(self) -> dict:
+        return {
+            'nom': self.nom,
+            'frites': self.frites,
+            'boisson': self.boisson,
+            'prix': self.prix.__float__(),
+            'en_ligne': self.en_ligne,
+            'du_moment': self.du_moment
+        }
