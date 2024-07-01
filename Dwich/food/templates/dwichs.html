@@ -1,25 +1,25 @@
-{% extends 'html/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
-{% block title %}frites{% endblock %}
+{% block title %}dwichs{% endblock %}
 
 {% block content %}
-    <h1>frites</h1>
+    <h1>dwichs</h1>
 
-    {% for dwitch in dwitchs %}
-    {% if dwitch.en_ligne and dwitch.du_moment %}
+    {% for dwich in dwichs %}
+    {% if dwich.en_ligne and dwich.du_moment %}
         <h2 class="title">Du moment</h2>
         <div class="col-md-6 p-4">
-                <img class="picture" src="{{ dwitch.image }}">
-                <h4 class="item_title" id="bur{{dwitch.id}}">{{ dwitch.nom }}</h4>
-                <h6 class="item_title">{{ dwitch.description }}</h6>
+                <img class="picture" src="{{ dwich.image }}">
+                <h4 class="item_title" id="bur{{dwich.id}}">{{ dwich.nom }}</h4>
+                <h6 class="item_title">{{ dwich.description }}</h6>
                 <div class="form-check-inligne">
                     <label class="form-check_label">
-                        <input class="form-check-input" type="radio" name="dwitch{{dwitch.id}}" value="{{dwitch.prix}}" checked>
-                        {{ dwitch.prix }} €
+                        <input class="form-check-input" type="radio" name="dwich{{dwich.id}}" value="{{dwich.prix}}" checked>
+                        {{ dwich.prix }} €
                     </label>
                 </div>
                 <div>
-                    <button class="btn" onclick="adddwitch('{{ dwitch.id }}')"> Ajouter au panier</button>
+                    <button class="btn" onclick="adddwich('{{ dwich.id }}')"> Ajouter au panier</button>
                 </div>
     {% endif %}
 {% endfor %}
@@ -29,26 +29,26 @@
                 <div class="col-md-8">
                     <h2 class="title">Carte</h2>
                     <div class="row">
-                        {% for frite in frites %}
+                        {% for dwich in dwichs %}
                             <div class="col-md-6 p-4">
-                            {% if frite.en_ligne and not frite.du_moment %}
-                                <img class="picture" src="{{ frite.image }}">
-                                <h4 class="item_title" id="bur{{frite.id}}">{{ frite.nom }}</h4>
-                                <h6 class="item_title">{{ frite.description }}</h6>
+                            {% if dwich.en_ligne and not dwich.du_moment %}
+                                <img class="picture" src="{{ dwich.image }}">
+                                <h4 class="item_title" id="bur{{dwich.id}}">{{ dwich.nom }}</h4>
+                                <h6 class="item_title">{{ dwich.description }}</h6>
                                 <div class="form-check-inligne">
                                     <label class="form-check_label">
-                                        <input class="form-check-input" type="radio" name="frite{{frite.id}}" value="{{frite.prix}}" checked>
-                                        {{ frite.prix }} €
+                                        <input class="form-check-input" type="radio" name="dwich{{dwich.id}}" value="{{dwich.prix}}" checked>
+                                        {{ dwich.prix }} €
                                     </label>
                                 </div>
                                 <!-- <div class="form-check-inligne">
                                     <label class="form-check_label">
-                                        <input class="form-check-input" type="radio" name="frite{{frite.id}}">
-                                        {{ frite.prix }} + 4 €
+                                        <input class="form-check-input" type="radio" name="dwich{{dwich.id}}">
+                                        {{ dwich.prix }} + 4 €
                                         trouver pour le double 7 8min
                                     </label> -->
                                 </div>
-                                <button class="btn" onclick="addfrite('{{ frite.id }}')"> Ajouter au panier</button>
+                                <button class="btn" onclick="adddwich('{{ dwich.id }}')"> Ajouter au panier</button>
                             {% endif %}
                         </div>
                         {% endfor %}

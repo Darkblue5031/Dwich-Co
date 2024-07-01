@@ -10,10 +10,10 @@ def menus(request):
     request.session.set_expiry(0)
     burger_menu = BurgerMenu.objects.all()
     ctx = {'burgers': burger_menu, }
-    return render(request, 'html/menus.html', ctx)
+    return render(request, './menu/templates/menus.html', ctx)
 
 def burgers(request):
-    return render(request, 'html/burgers.html', ctx)
+    return render(request, './food/templates/burgers.html', ctx)
 
 
 class BurgerMenuAutocomplete(View):
